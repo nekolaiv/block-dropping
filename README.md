@@ -1,4 +1,4 @@
-# Tetris-Inspired Block Game
+# Tetris-Inspired Block Game (Under Development)
 
 A simple command-line interface (CLI) game inspired by Tetris, built from scratch in Python. This project aims to create a fun and engaging experience while learning about game development concepts.
 
