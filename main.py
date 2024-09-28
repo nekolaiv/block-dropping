@@ -5,7 +5,7 @@ def clear():
     os.system('clear')
     
 def delay():
-    sleep(0.5)
+    sleep(0.1)
 
 
 class Block:
@@ -87,16 +87,19 @@ class Tetris:
                  temp = screen_list[i][mid]
                  screen_list[i][mid] = block
                  clear()
+                 
                  screen.display_screen()
+                 if screen_list[i + 1][mid] == '[]' or i == y - 1:
+                    break
+                 
                  screen_list[i][mid] = temp
                  delay()
-               
-            running = False
-
+    
     
 def main() -> None:
     tetris: Tetris = Tetris()
     tetris.run()
     
-if __name__ == '__main__':
+if _name_ == '_main_':
     main()
+    
