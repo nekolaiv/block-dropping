@@ -1,4 +1,4 @@
-# Tetris-Inspired Block Game (Under Development)
+# Block Game (Under Development)
 
 A simple command-line interface (CLI) game inspired by Tetris, built from scratch in Python. This project aims to create a fun and engaging experience while learning about game development concepts.
 
@@ -28,8 +28,8 @@ To get started with the game, you'll need Python installed on your system. The g
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/tetris-inspired-game.git
-cd tetris-inspired-game
+git clone https://github.com/nekolaiv.dev/block-drop.git
+cd block-drop
 ```
 
 ### Controls (Planned)
