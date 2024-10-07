@@ -20,7 +20,9 @@ class Components:
     def square(self, screen, x, y, content=Block().block):
         screen[y][x] = content
         screen[y][x + 1] = content
-        screen[y][x + 2] = content
+        if y > 0:
+            screen[y - 1][x] = content
+            screen[y - 1][x + 1] = content
        
         
 class Screen:
