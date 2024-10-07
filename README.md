@@ -1,4 +1,4 @@
-# Block Game (Under Development)
+# Block Fall (Under Development)
 
 A simple command-line interface (CLI) game inspired by Tetris, built from scratch in Python. This project aims to create a fun and engaging experience while learning about game development concepts.
 
@@ -28,8 +28,8 @@ To get started with the game, you'll need Python installed on your system. The g
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/nekolaiv.dev/block-drop.git
-cd block-drop
+git clone https://github.com/nekolaiv.dev/block-fall.git
+cd block-fall
 ```
 
 ### Controls (Planned)
