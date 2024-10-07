@@ -15,7 +15,12 @@ class Block:
 
 class Components:
     def __init__(self):
-        pass
+        self.block = Block()
+
+    def square(self, screen, x, y, content=Block().block):
+        screen[y][x] = content
+        screen[y][x + 1] = content
+        screen[y][x + 2] = content
        
         
 class Screen:
@@ -78,21 +83,24 @@ class Tetris:
         block = block.block
         x: int = screen.screen_width
         y: int = screen.screen_height
-        mid: int = x // 2
+        x: int = x // 2
     
         screen.display_screen()
+
+        component: Components = Components()
+        dot = '. '
         
         while(running):
             for i in range(0, y, 1):
-                 temp = screen_list[i][mid]
-                 screen_list[i][mid] = block
+                 
+                 component.square(screen_list, x, i)
                  clear()
                  
                  screen.display_screen()
-                 if screen_list[i + 1][mid] == '[]' or i == y - 1:
+                 if screen_list[i + 1][x] == '[]' or i == y - 1:
                     break
                  
-                 screen_list[i][mid] = temp
+                 component.square(screen_list, x, i, dot)
                  delay()
     
     
@@ -100,6 +108,6 @@ def main() -> None:
     tetris: Tetris = Tetris()
     tetris.run()
     
-if _name_ == '_main_':
+if __name__ == '__main__':
     main()
     
