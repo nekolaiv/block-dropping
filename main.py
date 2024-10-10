@@ -1,5 +1,6 @@
 import os
 from time import sleep
+from pynput import keyboard
 
 def clear():
     os.system('clear')
@@ -16,6 +17,7 @@ class Block:
 class Components:
     def __init__(self):
         self.block = Block()
+        self.screen = Screen()
 
     def square(self, screen, x, y, content=Block().block):
         screen[y][x] = content
@@ -68,42 +70,60 @@ class Screen:
 
 class Tetris:
     def __init__(self):
-        pass
+        self.screen = Screen()
+        self.block = Block()
+        self.component = Components()
+        self.width = self.screen.screen_width
+        self.height = self.screen.screen_height
+        self.x = self.width // 2
+        self.y = self.height
+        self.component_position = [self.y, self.x]
+        self.listener = keyboard.Listener(on_press=self.on_press)
     
-    def move(self):
-        pass
-        
+    def move_component(self, dx):
+        new_x = self.component_position[1] + dx
+        if 0 <= new_x < self.width - 1:
+            self.component_position[1] = new_x
+
+    def on_press(self, key):
+        if key == keyboard.Key.esc:
+            return False  # Exit the listener
+        elif key == keyboard.Key.left:
+            self.move_component(-1)
+        elif key == keyboard.Key.right:
+            self.move_component(1)
     
     
     def run(self) -> None:
+        self.listener.start()  # Start the listener
         running: bool = True
-        
-        block: Block = Block()
-        screen: Screen = Screen()
-        screen_list: list = screen.screen_body
-        
-        block = block.block
-        x: int = screen.screen_width
-        y: int = screen.screen_height
-        x: int = x // 2
-    
-        screen.display_screen()
 
-        component: Components = Components()
-        dot = '. '
+        block = self.block
+        component = self.component
         
+        screen_list = self.screen.screen_body
+        block = block.block
+        x: int = self.component_position[1]
+        y: int = self.component_position[0]
+        dot = '. '
+    
+        self.screen.display_screen()
         while(running):
-            for i in range(0, y, 1):
+            for dy in range(0, y, 1):
+                if screen_list[dy + 1][self.component_position[1]] == '[]' and dy == 0:
+                    running = False
                  
-                 component.square(screen_list, x, i)
-                 clear()
-                 
-                 screen.display_screen()
-                 if screen_list[i + 1][x] == '[]' or i == y - 1:
+                component.square(screen_list, self.component_position[1], dy)
+                clear()
+                
+                self.screen.display_screen()
+                if screen_list[dy + 1][self.component_position[1]] == '[]' or dy == y - 1:
                     break
-                 
-                 component.square(screen_list, x, i, dot)
-                 delay()
+                
+                component.square(screen_list, self.component_position[1], dy, dot)
+                delay()
+        
+        print("Game over!")
     
     
 def main() -> None:
