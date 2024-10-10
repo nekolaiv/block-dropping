@@ -7,7 +7,6 @@ A simple command-line interface (CLI) game inspired by Tetris, built from scratc
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [Development](#development)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
